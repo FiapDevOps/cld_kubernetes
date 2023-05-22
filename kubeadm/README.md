@@ -1,17 +1,24 @@
+Primeiro crie as variaveis que serão utilizadas com o kubeadm na inicialização do control plane:
+
 ```sh
 export IPADDR=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 export NODENAME=$(hostname -s)
 export POD_CIDR="192.168.0.0/16"
 ```
 
+Remova a configuração atual do containerd e em seguida reinicie po serviço:
 ```sh
 rm -rf /etc/containerd/config.toml && systemctl restart containerd
+```
 
+Inicie o kubeadm utilizando as variaveis criadas anteriormente:
+```sh
 sudo kubeadm init --apiserver-advertise-address=$IPADDR  --apiserver-cert-extra-sans=$IPADDR  --pod-network-cidr=$POD_CIDR --node-name $NODENAME --ignore-preflight-errors Swap
 ```
 
 Documentação de ref: [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
+Após a inicialização ajuste as variaveis de sua home de usuário conforme para acessar o cluster kubectl:
 ```sh
 sudo su -
 mkdir -p $HOME/.kube
@@ -43,3 +50,10 @@ Verifique a criação das pods e distribuição:
 ```sh
 kubectl get po -n default -o wide
 ```
+
+---
+
+##### Fiap - MBA
+profhelder.pereira@fiap.com.br
+
+**Free Software, Hell Yeah!**
