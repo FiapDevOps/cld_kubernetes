@@ -8,8 +8,8 @@ Repositório com as bases no conteúdo da disciplina de Orquestração de Contai
 
 | Laboratório       | Descrição |
 |-------------------|-----------|
-| [Cloud9](https://github.com/fiapdevops/kune-class/tree/main/cloud9) | Preparação da IDE como plataform de lançamento para os próximos exemplos; |
-| [Kubeadm](https://github.com/fiapdevops/kune-class/tree/main/kubeadm) | Usando o kubeadm para entrega de um cluster kubernetes |
+| [Cloud9](https://github.com/fiapdevops/kube-class/tree/main/cloud9) | Preparação da IDE como plataform de lançamento para os próximos exemplos; |
+| [Kubeadm](https://github.com/fiapdevops/kube-class/tree/main/kubeadm) | Usando o kubeadm para entrega de um cluster kubernetes |
 
 ---
 
