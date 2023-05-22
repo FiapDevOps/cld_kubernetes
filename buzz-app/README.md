@@ -17,14 +17,14 @@ This repo have the following content:
 Build Instructions:
 
 ```sh
-docker build . -t buzz-app:0.0.1
+docker build . -t buzz-app
 ```
 
 So now you can make a quickl test:
 
 ```sh
-docker run -d buzz-app:0.0.1
-curl 127.0.0.1:5000
+docker run -d -p 80:5000 buzz-app
+curl 127.0.0.1
 ```
 
 ---
