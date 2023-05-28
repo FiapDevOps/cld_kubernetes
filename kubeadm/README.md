@@ -125,18 +125,15 @@ for HOST in $(echo $WORKERS); do \
 kubectl get nodes
 ```
 
-3.5 Os nodes estão a disposição porém sem um componente atuando como CNI(https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/), esse status pode ser consultado a partir da informação de taint que foi aplicada ao node pelo kube-controller-manager:
+> Os nodes estão a disposição porém sem um componente atuando como CNI(https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
 
-```sh
-kubectl get nodes -o jsonpath=’{.items[].spec.taints[?(@.effect==“NoSchedule”)].effect}{"\t"}{.items[].metadata.name}’ | cut -f 2,3
-```
 
-3.7 Configure o calico como o nosso mecanismo de CNI usando o comando abaixo:
+3.5 Configure o calico como o nosso mecanismo de CNI usando o comando abaixo:
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
 ```
 
-3.8 Aguarde até que as pods estejam em execução e verifique novamente o status do cluster:
+3.6 Aguarde até que as pods estejam em execução e verifique novamente o status do cluster:
 
 ```sh
 kubectl get nodes
@@ -154,6 +151,16 @@ kubectl -n default apply -f https://k8s.io/examples/application/deployment.yaml
 4.2 Verifique a criação das pods e distribuição:
 ```sh
 kubectl get po -n default -o wide
+```
+
+4.3 Crie um serviço com um endpoint para o acesso aos pods:
+```sh
+kubectl expose deployment nginx-deployment -n default --name=webserver --port=80
+```
+
+4.4 Verifique a criação do serviço:
+```sh
+kubectl describe svc webserver -n default 
 ```
 
 ---
