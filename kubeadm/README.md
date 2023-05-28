@@ -1,8 +1,12 @@
 # Entrega de um cluster manual configurado usando kubeadm
 
-Documentação de apoio: 
+Documentação de ref: 
 
+- [Criação de cluster via kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/);
+- [Instalação do Docker](https://docs.docker.com/engine/install/ubuntu/);
+- [Instalação do kubelet, kubeadm e kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management);
 
+---
 
 ## 1. Criação da infraestrutura usando terraform: 
 
@@ -55,10 +59,12 @@ sudo rm -rf /etc/containerd/config.toml && sudo systemctl restart containerd
 
 2.3 Inicie o kubeadm utilizando as variaveis criadas anteriormente:
 ```sh
-sudo kubeadm init --apiserver-advertise-address=$IPADDR  --apiserver-cert-extra-sans=$IPADDR  --pod-network-cidr=$POD_CIDR --node-name $NODENAME --ignore-preflight-errors Swap
+sudo kubeadm init --apiserver-advertise-address=$IPADDR \
+        --apiserver-cert-extra-sans=$IPADDR  \
+        --pod-network-cidr=$POD_CIDR \
+        --node-name $NODENAME \
+        --ignore-preflight-errors Swap
 ```
-
-Documentação de ref: [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 2.4 Após a inicialização ajuste as variaveis de sua home de usuário conforme para acessar o cluster kubectl:
 ```sh
@@ -94,14 +100,6 @@ export CONTROLPLANE=$(
 JOIN_CMD=$(ssh -l ubuntu $CONTROLPLANE  sudo kubeadm token create --print-join-command)
 
 echo $JOIN_CMD
-
-export WORKERS=$(
-    aws ec2 describe-instances \
-        --filters "Name=tag:Name,Values=worker" \
-        --query "Reservations[*].Instances[*].PrivateIpAddress" --output text
-)
-
-echo $WORKERS
 ```
 
 > O comando anterior permite recuperar o token que será usado para os workers autenticaram no cluster, e identificar o endereço dos workers;
@@ -109,6 +107,12 @@ echo $WORKERS
 3.3 Com esse dado em mãos execute o join dos workers no cluster:
 
 ```sh
+export WORKERS=$(
+    aws ec2 describe-instances \
+        --filters "Name=tag:Name,Values=worker" \
+        --query "Reservations[*].Instances[*].PrivateIpAddress" --output text
+)
+
 for HOST in $(echo $WORKERS); do \
     ssh -l ubuntu $HOST -o StrictHostKeyChecking=no \
     "sudo rm -rf /etc/containerd/config.toml && sudo systemctl restart containerd && sudo $JOIN_CMD"; \
