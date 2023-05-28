@@ -17,6 +17,16 @@ terraform {
 }
 
 
+resource "tls_private_key" "lab_resource_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "lab_key" {
+  key_name   = var.key_name
+  public_key = tls_private_key.lab_resource_key.public_key_openssh
+}
+
 data "aws_vpc" "def_vpc" {
   default = "true"
 }
@@ -87,7 +97,7 @@ resource "aws_instance" "kubernetes_workers" {
     instance_type               = "t3a.medium"
     associate_public_ip_address = true    
     user_data                   = "${file("templates/kubeadm.yaml")}"
-    key_name                    = "vockey"
+    key_name                    = aws_key_pair.lab_key.key_name
     vpc_security_group_ids      = ["${aws_security_group.kubeadm_sg.id}"]
     depends_on                  = [aws_security_group.kubeadm_sg]
     count                       = "2"
@@ -104,7 +114,7 @@ resource "aws_instance" "kubernetes_controlplane" {
     instance_type               = "t3a.medium"
     associate_public_ip_address = true    
     user_data                   = "${file("templates/kubeadm.yaml")}"
-    key_name                    = "vockey"
+    key_name                    = aws_key_pair.lab_key.key_name
     vpc_security_group_ids      = ["${aws_security_group.kubeadm_sg.id}"]
     depends_on                  = [aws_security_group.kubeadm_sg]
     
