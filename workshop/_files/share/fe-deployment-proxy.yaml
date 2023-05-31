@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fe-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+      tier: fe
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: fe
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: frontend-config
+            mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: frontend-config
+        configMap:
+          name: frontend-config

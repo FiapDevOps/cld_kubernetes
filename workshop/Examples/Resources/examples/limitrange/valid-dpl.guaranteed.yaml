@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: valid-dpl-guaranteed
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: valid-dpl
+    spec:
+      containers:
+      - name: kubernetes-serve-hostname
+        image: gcr.io/google_containers/serve_hostname
+        resources:
+         limits:
+           cpu: 100m
+           memory: 400Mi
+         requests:
+           cpu: 100m
+           memory: 400Mi

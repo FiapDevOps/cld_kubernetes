@@ -1,0 +1,35 @@
+!SLIDE center transition=scrollUp
+
+# Configurando o Kubelet
+![kubernetes](images/kubernetes.png)
+
+!SLIDE transition=scrollUp
+
+# Configurando o Kubelet
+
+No Kubernetes toda a manipulação de recursos é feita utilizando o kubelet, responsável pela comunicação com a API;
+
+Para configuração de acessos acessar a URL:
+
+[https://login.service.infra.sandbox.kubernetes.intranet:5555](https://login.service.infra.sandbox.kubernetes.intranet:5555)
+
+( Autenticar usando credenciais do AD )
+
+- Cole o commando gerado após a autenticação no terminal do host GNU/Linux a ser usado para acesso ao ambiente;
+
+- Caso seja necessário configurar o kubelet verifique a documentação referente no [Confluence](https://confluence.intranet.uol.com.br/confluence/pages/viewpage.action?pageId=55844412);
+
+
+!SLIDE commandline incremental transition=scrollUp
+
+# Configurando o Kubelet
+
+Ao final do processo será criado um contexto, uma configuração de acesso baseado em suas credenciais:
+
+        $ kubectl config current-context
+        sandbox
+
+
+.callout.info `É possível determinar contextos especificos para cada um dos ambientes, ( Sandbox, DEvelopment e Production )`
+
+.callount.info `Quando possuir mais de um contexto você poderá "chavear" entre eles usando o comando "kubectl config use-context <NOME DO CONTEXTO>"`
