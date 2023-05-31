@@ -25,7 +25,7 @@
 
 # Deployments
 
-Crie o arquivo [fe-deployment.yaml](https://stash.uol.intranet/projects/PAEIK/repos/kube-class/browse/_files/first-deployment.yaml) conforme modelo abaixo:
+Crie o arquivo [fe-deployment.yaml](https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/fe-deployment.yaml) conforme modelo abaixo:
 
 
     @@@shell

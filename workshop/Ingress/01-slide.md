@@ -13,8 +13,6 @@
 
 # Ingress
 
-- Serviços e pods possuem endereços IP roteáveis dentro da rede de cluster e da infra-estrutura UOL, para publicar aplicações e serviços dentro dessa infra-estrutura usando o kubernetes o Resource Service é utilizado;
-
 - Para publicar serviços que demandem acesso a partir da internet utilizamos o [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/);
 
 !SLIDE transition=scrollUp

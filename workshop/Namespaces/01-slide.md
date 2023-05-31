@@ -53,4 +53,4 @@ Crie um namespace para deploy de seus recursos, utilize seu username como nome p
 	$ kubectl create namespace demo
 	namespace/demo created
 
-.callout.info `Na criação do namespace apenas os caracteres que se encaixam na regex [a-z0-9]([-a-z0-9]*[a-z0-9])? (por exemplo: 'uolcs-busca' ou '123-abc'`
+.callout.info `Na criação do namespace apenas os caracteres que se encaixam na regex [a-z0-9]([-a-z0-9]*[a-z0-9])? (por exemplo: 'test-app' ou '123-abc'`

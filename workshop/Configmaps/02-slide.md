@@ -2,12 +2,13 @@
 
 # Consumindo ConfigMap nas pods
 
-Usaremos o arquivo [be-deployment.yaml](URL) para criar um deploy que atuará como backend dessa aplicação:
+Usaremos o arquivo [be-deployment.yaml](https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/be-deployment.yaml) para criar um deploy que atuará como backend dessa aplicação:
 
-	$ kubectl -n demo apply \
-		-f URL 
+	$ kubectl -n demo apply -f be-deployment.yaml 
 	ddeployment.apps/be-deployment created
 	service/backend created
+
+URL usada no comando: https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/be-deployment.yaml  
 
 Faça um teste com uma chamada ao serviço criado:
 
@@ -20,10 +21,11 @@ Faça um teste com uma chamada ao serviço criado:
 
 # Consumindo ConfigMap nas pods
 
-Em seguida ajuste o deploy fe-deployment para que consuma e expanda a configuração entregue via configmap, para isso substitua a versão anterior pela versão fe-deployment-proxy:
+Em seguida ajuste o deploy fe-deployment para que consuma e expanda a configuração entregue via configmap, para isso substitua a versão anterior pela versão [fe-deployment-proxy](https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/fe-deployment-proxy.yaml):
 
-	$ kubectl apply -n demo apply \
-		-f URL
+	$ kubectl apply -n demo apply -f fe-deployment-proxy.yaml
+
+URL usada no comando: https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/fe-deployment-proxy.yaml
 
 .callout.info `Neste caso substituimos o arquivo mas seria possível embora não recomendado em produção editar diretamente adicionando os campos para montar o volume com o configmap`
 

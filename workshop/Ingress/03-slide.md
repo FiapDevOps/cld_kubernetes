@@ -95,8 +95,6 @@ Aplique a configração do ingress:
 
 **Bundle Certificates:**
 
-- A implementação atual dos nós de ingress no Kubernetes UOLCS utiliza o nginx como recurso de Proxy;
-
 - Por padrão o nginx não possui campo para especificação da CA utilizada na assinatura do certificado, logo alguns navegadores podem reclamar sobre um certificado assinado por uma certificadora não conhecida por ele (Mesmo que seja uma CA "válida");
 
 - Para evitar esse problema proceder da mesma forma que no processo de configuração do certificado diretamente no Nginx: Utilizar um ***Certificado Bundle***;

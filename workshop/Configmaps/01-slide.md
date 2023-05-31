@@ -58,12 +58,26 @@ Esse arquivo será aplicado como configuração nos containers de Nginx das pods
 
 # Configmaps
 
-Use o arquivo [configmap.yaml](URL) para criação de um ConfigMap:
+Para facilitar a execução do workshop faça uma cópia do projeto com as estruturas de yaml:
 
-	$ kubectl create -f  -n demo
+	$ git clone https://github.com/fiapdevops/kube-class
+
+Acesse o diretório com as estruturas:
+
+	$ cd kube-class/workshop/_files/share
+
+Use o arquivo [configmap.yaml](https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/configmap.yaml) para criação de um ConfigMap:
+
+	$ kubectl -n demo create -f configmap.yaml
 	configmap/frontend-config created
 
-O yaml utilizado para criar o arquivo de configuração como um Configmap pode ser obtido [AQUI](URL);
+URL usada no comando: https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/configmap.yaml
+
+!SLIDE commandline incremental transition=scrollUp
+
+# Configmaps
+
+O yaml utilizado para criar o arquivo de configuração como um Configmap pode ser obtido [nesta url](https://raw.githubusercontent.com/fiapdevops/kube-class/main/workshop/_files/share/configmap.yaml);
 
 	$ kubectl get configmap -n demo
 	NAME               DATA     AGE
