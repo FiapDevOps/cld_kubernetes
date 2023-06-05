@@ -26,6 +26,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # Download e instalação do kubectl
 printf "\n Instalando o cliente do Kubernetes \n"
+sudo curl --silent --location -o /usr/local/bin/kubectl    https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.17/2023-05-11/bin/linux/amd64/kubectl
+sudo chmod +x /usr/local/bin/kubectl
 
 # Download e instalação do eksctl
 printf "\n Instalando o cliente eksctl \n"
