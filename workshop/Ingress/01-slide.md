@@ -13,12 +13,6 @@
 
 # Ingress
 
-- Para publicar serviços que demandem acesso a partir da internet utilizamos o [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/);
-
-!SLIDE transition=scrollUp
-
-# Ingress
-
 Caracteristicas importantes sobre o Ingress:
 
 - O Ingress trabalha no mapeamento de conexões oriundas da internet para os protocolos HTTP/HTTPS;
@@ -27,10 +21,12 @@ Caracteristicas importantes sobre o Ingress:
 	- HTTP host headers;
 	- HTTP URL paths;
 
-Trata-se de uma implementação do NGINX como Proxy reverso configurado através de resources do Kubernetes;
+.callout.info `Na prática um ingress trata-se de uma implementação de um proxy reversos como o Nginx configurado através de resources do Kubernetes;`
 
 !SLIDE transition=scrollUp
 
 # Ingress
 
 ![kubernetes](images/ingress-ex1.png)
+
+!SLIDE commandline incremental transition=scrollUp

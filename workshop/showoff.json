@@ -13,6 +13,10 @@
     {"section":"Deployments"},
     {"section":"Configmaps"},
     {"section":"Complementos"},
+    {"section":"EKS"},
+    {"section":"Helm"},
+    {"section":"Ingress"},
+    {"section":"ArgoCD"},
     {"section":"End"}
   ]
 }

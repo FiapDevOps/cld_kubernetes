@@ -1,35 +1,59 @@
-!SLIDE transition=scrollUp
+# Instalação do Ingress Controller
 
-# Ingress
+Utilizaremos o helm como ferramenta para instalar o Ingresso Controller default do Kubernetes:
 
-Para publicar uma aplicação utilizando o ingress criamos uma estrutura similar ao exemplo abaixo:
+	$ helm upgrade --install ingress-nginx ingress-nginx \
+        --repo https://kubernetes.github.io/ingress-nginx \
+        --namespace ingress-nginx \
+        --create-namespace
 
-    @@@shell
-    apiVersion: extensions/v1beta1
-    kind: Ingress
-    metadata:
-      name: test
-    spec:
-      rules:
-      - host: foo.bar.com
-        http:
-          paths:
-          - path: /
-            hello:
-              serviceName: hello
-              servicePort: 80
+Após a instalação aguarde até a pod do controller esteja em execução:
 
-.download ingress.yaml
+    $ kubectl wait --namespace ingress-nginx \
+        --for=condition=ready pod \
+        --selector=app.kubernetes.io/component=controller \
+        --timeout=120s
 
-!SLIDE transition=scrollUp
+!SLIDE commandline incremental transition=scrollUp
 
-# Ingress
+# Criando um recurso para exposição via Ingress
 
-![kubernetes](images/ingress-ex1A.png)
+Utilize a command line para criar um novo deployment: 
 
-!SLIDE transition=scrollUp
+	$ kubectl create deployment demo --image=httpd --port=80
+    deployment.apps/demo created
 
-# Ingress
+Crie um serviço interno que será exposto via Ingress ao invés de através de um LoadBalancer:
 
-![kubernetes](images/ingress-ex1B.png)
+    $ kubectl expose deployment demo --name=backend
+    service/backend exposed
 
+!SLIDE commandline incremental transition=scrollUp
+
+# Criando um recurso para exposição via Ingress
+
+Crie um recurso do tipo ingress via command line:
+
+    $ kubectl create ingress test \
+        --class=nginx \
+        --save-config \
+        --rule="foo.bar.com/*=backend:80"
+    ingress.networking.k8s.io/test created
+
+!SLIDE commandline incremental transition=scrollUp
+
+# Criando um recurso para exposição via Ingress
+
+Para validar identifique o endereço de endpoint do serviço de ingress controller:
+
+    $ kubectl get svc ingress-nginx-controller \
+        -n ingress-nginx -o json
+
+    $ INGRESS=$(kubectl get svc ingress-nginx-controller \
+        -n ingress-nginx -o json | \
+        jq -r '.status.loadBalancer.ingress[].hostname')
+
+Utilize o endereço para forjar uma requisição http utilizando o header de Host foo.bar.com:
+
+    $ curl -H 'Host: foo.bar.com' http://$INGRESS
+    <html><body><h1>It works!</h1></body></html>
