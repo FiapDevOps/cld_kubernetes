@@ -41,7 +41,7 @@ Verifique o nodegroup com os nós que serão responsáveis pelo workload:
 	CLUSTER         NODEGROUP       STATUS ...
 	eksworkshop     eks-node-group  ACTIVE ...
 
-.callout.question `É possível criar o cluster via eksctl? Sim o eksctl atua como solução de automação para entrega de cluster usando o conceito de infraestreutura imutável`
+.callout.question `É possível criar o cluster via eksctl? Sim, o eksctl atua como solução de automação para entrega de cluster usando o conceito de infraestrutura imutável`
 
 !SLIDE commandline incremental transition=scrollUp
 
@@ -64,7 +64,7 @@ Verifique a configuação populada no arquivo ~/.kube/config:
 
 # Preparação da IDE
 
-Para que seja possível executar comandos com autorização no cluster utilizaremos a credencial local do larner labs, a mesma que foi usada na criação do cluster via interface;
+Para ser possível executar comandos com autorização no cluster utilizaremos a credencial local do larner labs, a mesma usada na criação do cluster via interface;
 
 1. Para executar essa mudança na ide no canto superior direito clique sobre o icone de engrenagem;
 
@@ -82,9 +82,9 @@ Para configurar a nova credencial crie o arquivo abaixo:
 
 	$ touch ~/.aws/credentials
 
-Abra o arquivo usando o editor de sua preferência e coloque as permissões obitidas na tela inicial do learner labs clicando na opção **"AWS Details"** e em seguida no botão AWS CLI: **Show**
+Abra o arquivo usando o editor de sua preferência e coloque as permissões obtidas na tela inicial do learner labs clicando na opção **"AWS Details"** e em seguida no botão AWS CLI: **Show**
 
-.callout.question `Cajo ocorra dúvida no processo verifique a etapa3 da configuração postada como vídeo no portal na sessão de material de apoio`
+.callout.question `Caso ocorra dúvida no processo verifique a etapa3 da configuração postada como vídeo no portal na sessão de material de apoio`
 
 
 !SLIDE commandline incremental transition=scrollUp

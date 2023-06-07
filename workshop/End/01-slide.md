@@ -4,4 +4,4 @@
 
 profhelder.pereira@fiap.com.br
 
-Fiap 2023 - Kubernetes Workshop - Parte 2
+Fiap 2023 - Kubernetes Workshop
