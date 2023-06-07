@@ -47,6 +47,6 @@ A senha gerada no bootstrap inicial do argo foi armazenada em um recurso do tipo
 		argocd-initial-admin-secret \
 		-o jsonpath="{.data.password}" | base64 -d`
 
-Utilize esse senha para acessar o Argo na UI aberta e acessível atra'ves do LoadBalancer criado anteriormente, neste acesso **utilize o usuário Admin**
+Utilize esse senha para acessar o Argo na UI aberta e acessível atra'ves do LoadBalancer criado anteriormente, neste acesso **utilize o usuário admin**
 
 	$ echo $ARGO_PWD

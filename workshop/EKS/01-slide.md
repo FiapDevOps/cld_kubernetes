@@ -66,7 +66,7 @@ Verifique a configuação populada no arquivo ~/.kube/config:
 
 Para que seja possível executar comandos com autorização no cluster utilizaremos a credencial local do larner labs, a mesma que foi usada na criação do cluster via interface;
 
-1. Para executar essa mudança na ide no canto superior esquerdo clique sobre o icone de engrenagem;
+1. Para executar essa mudança na ide no canto superior direito clique sobre o icone de engrenagem;
 
 2. Escolha no menu aberto ao lado esquerdo a opção "AWS Settings";
 
