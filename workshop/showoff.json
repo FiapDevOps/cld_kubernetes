@@ -17,6 +17,7 @@
     {"section":"Helm"},
     {"section":"Ingress"},
     {"section":"ArgoCD"},
+    {"section":"Istio"},
     {"section":"End"}
   ]
 }
