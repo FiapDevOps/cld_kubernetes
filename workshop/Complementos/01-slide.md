@@ -19,7 +19,7 @@
 
 # POD Status
 
-PODS em status ***pending*** são basicamente pods que não podem ser alocadas ou ainda estão em processo de alocação em um node, a continuação desse status pode derivar de 'n' fatores,  por exemplo, falta de recursos de infra estrutura ( No caso do Sandbox ) ou estouro dos limites estabelecidos para o seu namespace;
+PODS em status ***pending*** são basicamente pods que não podem ser alocadas ou ainda estão em processo de alocação em um node, a continuação desse status pode derivar de 'n' fatores, por exemplo, falta de recursos de infra estrutura ou estouro dos limites estabelecidos para o seu namespace;
 
 PODS em status ***waiting*** são pods alocadas em um node que por algum motivo não conseguem ser executadas;
 
@@ -35,7 +35,7 @@ Outra categoria de Erros muito comuns são erros relacionados ao pull de imagens
 
 - Em situações onde estiver ocorrendo erros no processo de pull de imagem o status ***ErrImagePull*** será apresentado;
 
-- Caso o erro persista o status sera apresentado como ***ImagePullBackOff***;
+- Caso o erro persista o status ser apresentado como ***ImagePullBackOff***;
 
 .callout.warning `Verificar o caminho para imagem do container e as permissões de acesso no Registry pode ser um bom começo`
 
