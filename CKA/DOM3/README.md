@@ -9,7 +9,7 @@ Para a certificação CKA dentro do uso de recursos de Network e Services devera
 ```sh
 helm search hub ingress-nginx -o yaml | head -8
 ```
->>> Provavelmente o primeiro repositório no output será o reposiótio oficial do Ingress;
+> Provavelmente o primeiro repositório no output será o reposiótio oficial do Ingress;
 
 2.2. Faça a instalação do repositório:
 
@@ -28,7 +28,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 kubectl get po,svc -n ingress-controller
 ```
 
->> No processo de instalação um exemplo de estrutura para criação de um resource do tipo ingress é apresentado no output, você pode utilizar este exemplo ou referências da documentação oficial do Kubernetes;
+> No processo de instalação um exemplo de estrutura para criação de um resource do tipo ingress é apresentado no output, você pode utilizar este exemplo ou referências da documentação oficial do Kubernetes;
 
 2.3. Para validar cire um deploy e esponha usando um service:
 
@@ -59,4 +59,4 @@ curl -H 'Host: foo.bar.com' http://$EDGE
 <html><body><h1>It works!</h1></body></html>
 ```
 
->> Neste exemplo utilizamos o endereço do Cluster IP mas em um cloud provider devidamente configurado por padrão essa instalação via helm construirá um LoadBalancer público quando execute em um Cloud Provider.
+> Neste exemplo utilizamos o endereço do Cluster IP mas em um cloud provider devidamente configurado por padrão essa instalação via helm construirá um LoadBalancer público quando execute em um Cloud Provider.
