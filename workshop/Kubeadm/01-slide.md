@@ -94,7 +94,6 @@ Inicie o kubeadm utilizando as variaveis criadas anteriormente:
 
 Ajuste as variaveis de sua home de usuário conforme para acessar o cluster kubectl
 
-	$ sudo su -
 	$ mkdir -p $HOME/.kube
 	$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	$ sudo chown $(id -u):$(id -g) $HOME/.kube/config

@@ -3,7 +3,6 @@
 # Extras
 ![kubernetes](images/kubernetes.png)
 
-
 !SLIDE transition=scrollUp
 
 # Debbuging

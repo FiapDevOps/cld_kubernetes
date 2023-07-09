@@ -59,17 +59,16 @@ Acessando novamente a guia logada no controlplane verifique o status dos nodes a
 
 .callout.warning `Os nodes estão a disposição porém sem um addon atuando como pod network e portanto em status NotReady`
 
-!SLIDE transition=scrollUp
+!SLIDE commandline incremental transition=scrollUp
 
 # Kubeadm: Adicionando o calico ao cluster:
 
 Configure o calico como o nosso mecanismo de pod network:
 
-	kubectl apply -f \
-		https://encurtador.com.br/qBMNX
+	$ kubectl apply -f <URL>
 
-URL completa:
-https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+[Copie a URL aqui](https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml)
+
 
 .callout.warning `Foi necessário encurtar a URL para a tela do workshop mas na prática estamos criando um resouce com base no repositório git`
 

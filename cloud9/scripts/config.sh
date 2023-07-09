@@ -40,15 +40,24 @@ sudo curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/
 sudo chmod +x /tmp/get_helm.sh
 sudo /tmp/get_helm.sh
 
-printf "\n Gravando alterações no .bashrc \n"
+printf "\n Gravando alterações e veriaveis de exec no .bashrc \n"
 echo "export AWS_REGION=$(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)" >> $HOME/.bashrc
-
 }
 
 configure_access () {
 
+printf "Ajustando a configuração de SSH para evitar o StrictHostKeyChecking"
+
+cat <<EOF | tee $HOME/.ssh/config
+Host *
+    StrictHostKeyChecking no
+    User ubuntu
+EOF
+
+chmod 400 ~/.ssh/config
+
 printf "Identificando o SecurityGroup do projeto"
-aws ec2 describe-security-groups --filters Name=group-name,Values=*aws-cloud9* --query "SecurityGroups[*].[GroupName]" --output table
+aws ec2 describe-security-groups --filters Name=group-name,Values=*$C9_PID* --query "SecurityGroups[*].[GroupName]" --output table
 
 # Definindo o SECURITY GROUP atual
 CURRENT_SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=*$C9_PID* --query "SecurityGroups[*].[GroupId]" --output text)
